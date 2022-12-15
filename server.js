@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose")
-// import connectDB from "./config/db.js";
+//import connectDB from "./config/db.js";
 
 
 //connectDB()
