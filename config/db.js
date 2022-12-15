@@ -2,7 +2,7 @@
       useUnifiedTopology: true
       useNewUrlParser: true
       useCreateIndex: true
-    } */
+    } *////
 // import mongoose from "mongoose";
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
