@@ -1,11 +1,10 @@
 const path = require("path");
 const express = require("express");
-// const fileUpload = require("express-fileupload");
+const mongoose = require("mongoose")
+import connectDB from "./config/db.js";
+//
 
 const app = express();
-
-//middleware
-// app.use(fileUpload());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
