@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Handle GET requests to /express_backend route
 app.get("/express_backend", (req, res) => {
-  res.send({ message: "EXPRESS CONNECTED TO REACT AND READY TO UPLOAD EXCEL" });
+  res.send({ message: "EXPRESS AND MONGODB ARE RUNNING AND CONNECTED TO REACT" });
 });
 
 // Have Node serve the files for our built React app
