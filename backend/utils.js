@@ -1,5 +1,4 @@
-// import jwt from "jsonwebtoken";
-const { jwt } = require('jsonwebtoken')
+var jwt = require("jsonwebtoken");
 
 const generateToken = (user) => {
   return jwt.sign(
@@ -36,6 +35,6 @@ const isAuthenticated = (req, res, next) => {
 };
 
 module.exports = {
-    generateToken,
-    isAuthenticated,
-}
+  generateToken,
+  isAuthenticated,
+};
