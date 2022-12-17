@@ -1,4 +1,4 @@
-const { bcrypt } = require("bcrypt");
+var bcrypt = require('bcryptjs');
 
 const users = [
   {
@@ -9,7 +9,7 @@ const users = [
   },
   {
     name: "test user",
-    email: "dansimonson@mariposaweb.net",
+    email: "testuser@gmail.com",
     password: bcrypt.hashSync("123456"),
     isAdmin: false,
   },
