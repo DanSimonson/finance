@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
-const { userRouter } = require('./backend/routers/userRouter')
+const { userRouter } = require("./backend/routers/userRouter");
 
 const { connectDB } = require("./config/db");
 connectDB();
@@ -17,7 +17,7 @@ app.use("/api/users", userRouter);
 
 //error handling
 app.use((err, req, res, next) => {
-  res.status(500).send({message: err.message});
+  res.status(500).send({ message: err.message });
 });
 
 // Handle GET requests to /express_backend route

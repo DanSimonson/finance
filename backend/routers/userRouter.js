@@ -3,11 +3,11 @@
 // import bcrypt from "bcryptjs";
 // import User from "../Models/UserModel.js";
 // import { generateToken } from "../utils.js";
-const express = require('express');
-const expressAsyncHandler = require('express-async-handler')
-const bcrypt = require('bcrypt')
-const { User } = require('../models/UserModal')
-const { generateToken } = require('../utils')
+const express = require("express");
+const expressAsyncHandler = require("express-async-handler");
+const bcrypt = require("bcrypt");
+const { User } = require("../models/UserModal");
+const { generateToken } = require("../utils");
 
 const userRouter = express.Router();
 
@@ -68,5 +68,5 @@ userRouter.post(
 
 // export default userRouter;
 module.exports = {
-    userRouter
-}
+  userRouter,
+};
