@@ -55,9 +55,9 @@ function App() {
   const [data, setData] = useState([]);
 
 
-  useEffect(() => {
-    callBackendAPI();
-  }, []);
+  // useEffect(() => {
+  //   callBackendAPI();
+  // }, []);
 
   // const callBackendAPI = async () => {
   //   let temp = [];
