@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import styled from "styled-components";
-
+import { Route, Routes, Navigate } from "react-router-dom";
+import Main from "./Components/Main";
 
 const Wrapper = styled.div`
   padding-left: 2rem;
@@ -50,30 +51,41 @@ const FormLabel = styled.label`
 `;
 
 function App() {
+  const user = localStorage.getItem("token");
   const [data, setData] = useState([]);
+
 
   useEffect(() => {
     callBackendAPI();
   }, []);
 
-  const callBackendAPI = async () => {
-    let temp = [];
-    try {
-      const res = await axios("/express_backend");
-      temp.push(res.data);
-      setData(temp);
-    } catch (err) {
-      console.log("err.message: ", err.message);
-    }
-  };
+  // const callBackendAPI = async () => {
+  //   let temp = [];
+  //   try {
+  //     const res = await axios("/express_backend");
+  //     temp.push(res.data);
+  //     setData(temp);
+  //   } catch (err) {
+  //     console.log("err.message: ", err.message);
+  //   }
+  // };
+
 
   return (
     <>
-      {data.map((item, idx) => (
+      {/* {data.map((item, idx) => (
         <Wrapper key={idx}>
           <h2>{item.message}</h2>
         </Wrapper>
-      ))}
+      ))} */}
+      <Routes>
+      <Route path="/" exact element={<Main />} />
+			{/* {user && <Route path="/" exact element={<Main />} />} */}
+			{/* <Route path="/signup" exact element={<Signup />} />
+			<Route path="/login" exact element={<Login />} />
+			<Route path="/" element={<Navigate replace to="/login" />} /> */}
+		</Routes>
+
       {/* <Form>
         <FormDiv>
           <FormLabel htmlFor="myfile">Select an Excel Spreadsheet: </FormLabel>
