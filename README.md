@@ -1,7 +1,7 @@
 ### An APP showing login/signup functionality with JWT Authentication
 
-> This is a full stack (MERN) app with MongoDB, React, Express, Nodejs, 
-> Axios and JWT.
+This is a full stack app with MongoDB, React, Express, Nodejs, 
+Protected Routes, Axios and JWT.
 
 ### DEMO
 
