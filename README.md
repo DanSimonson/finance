@@ -11,7 +11,10 @@
 
 ## App Info
 
-This is a full-stack MERN Application demonstrating how to login and signup users using JWT Authentication. This application has a dynamic search feature.
+This is a full-stack MERN Application demonstrating how to login
+and signup users using JWT Authentication. 
+
+This application has a dynamic search feature.
 
 ### Author
 
