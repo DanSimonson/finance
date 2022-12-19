@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
+import SearchBar from "../Search/SearchBar";
+import ListResults from "../List/ListResults";
 import axios from "axios";
 import styles from "./Main.module.css";
 
 const Main = () => {
+  const [results, setResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   useEffect(() => {
-    getUsers();
+    getUsers()
   }, []);
 
   const getUsers = async () => {
     try {
       let { data } = await axios.get("/api/users/");
       if (data) {
-        console.log("data.users: ", data.users);
+        setResults(data.users);
+        setSearchResults(data.users)
+        
       }
     } catch (error) {
       console.log("error: ", error);
@@ -30,8 +36,9 @@ const Main = () => {
         <button className={styles.white_btn} onClick={handleLogout}>
           Logout
         </button>
-        
       </nav>
+      {results && <SearchBar results={results} setSearchResults={setSearchResults} />}
+      <ListResults searchResults={searchResults} />
     </div>
   );
 };

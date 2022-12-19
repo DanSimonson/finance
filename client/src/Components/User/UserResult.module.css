@@ -1,0 +1,17 @@
+.article {
+  margin: 1em;
+  padding: 1em;
+  background-color: midnightblue;
+  color: whitesmoke;
+  border-radius: 15px;
+}
+.article p {
+  color: whitesmoke;
+  margin-top: 0.5em;
+  font: inherit;
+}
+.article h2 {
+  color: whitesmoke;
+  margin-top: 0.5em;
+  font: inherit;
+}
