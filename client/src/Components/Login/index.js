@@ -17,16 +17,17 @@ function Login() {
     try {
       let { data } = await axios.post("/api/users/signin", { email, password });
       if (data) {
-        console.log("data: ", data);
         localStorage.setItem("userInfo", JSON.stringify(data));
         window.location.reload();
-        navigate("/")
-        // if (isAuth) {
-        //   navigate("/", { replace: true });
-        // } 
+        navigate("/");
+      }else{
+
       }
     } catch (error) {
-      console.log("error: ", error);
+      console.log("error: ", error.message);
+      alert("User Not Found");
+      setEmail('');
+      setPassword('');
     }
   };
   return (

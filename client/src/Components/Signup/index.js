@@ -11,7 +11,7 @@ function Signup() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert("Password and confirm password are not match");
@@ -43,7 +43,7 @@ function Signup() {
           </Link>
         </div>
         <div className={styles.right}>
-          <form className={styles.form_container} onSubmit={handleSubmit}>
+          <form className={styles.form_container} onSubmit={handleSubmitForm}>
             <h1>Create Account</h1>
             <input
               type="text"
@@ -77,11 +77,10 @@ function Signup() {
               placeholder="Confirm Password"
               name="confirmPassword"
               onChange={(e) => setConfirmPassword(e.target.value)}
-              value={password}
+              value={confirmPassword}
               required
               className={styles.input}
             />
-            {error && <div className={styles.error_msg}>{error}</div>}
             <button type="submit" className={styles.green_btn}>
               Sign Up
             </button>
@@ -93,3 +92,15 @@ function Signup() {
 }
 
 export default Signup;
+
+// {error && <div className={styles.error_msg}>{error}</div>}
+
+/* <input
+              type="password"
+              placeholder="Confirm Password"
+              name="confirmPassword"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={password}
+              required
+              className={styles.input}
+            /> */
