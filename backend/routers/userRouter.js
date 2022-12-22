@@ -1,15 +1,12 @@
-// import express from "express";
-// import expressAsyncHandler from "express-async-handler";
-// import bcrypt from "bcryptjs";
-// import User from "../Models/UserModel.js";
-// import { generateToken } from "../utils.js";
 const express = require("express");
 const expressAsyncHandler = require("express-async-handler");
 var bcrypt = require("bcryptjs");
 const { User } = require("../models/UserModal");
 const { generateToken } = require("../utils");
 const { users } = require("../../data");
-
+const { Token } = require("../models/TokenModal");
+const { sendMail } = require("../sendMail");
+const crypto = require("crypto");
 const userRouter = express.Router();
 
 userRouter.get(
@@ -57,14 +54,52 @@ userRouter.post(
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
     });
+
     const createdUser = await user.save();
-    res.send({
+    const token = await new Token({
+      userId: user._id,
+      token: crypto.randomBytes(32).toString("hex"),
+    }).save();
+
+    console.log("token: ", token);
+    const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
+    console.log("url: ", url);
+    console.log("user.email: ", user.email);
+    await sendMail(user.email, "Verify Email", url);
+
+    // res
+    //   .status(201)
+    //   .send({ message: "An Email was sent to your account. Please verify." });
+    res.status(201).send({
       _id: createdUser._id,
       name: createdUser.name,
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
       token: generateToken(createdUser),
+      message: "An Email was sent to your account. Please verify.",
     });
+  })
+);
+userRouter.get(
+  "/:id/verify/:token/",
+  expressAsyncHandler(async (req, res) => {
+    try {
+      const user = await User.findOne({ _id: req.params.id });
+      if (!user) return res.status(400).send({ message: "Invalid link" });
+
+      const token = await Token.findOne({
+        userId: user._id,
+        token: req.params.token,
+      });
+      if (!token) return res.status(400).send({ message: "Invalid link" });
+
+      await User.updateOne({ _id: user._id, verified: true });
+      await token.remove();
+
+      res.status(200).send({ message: "Email verified successfully" });
+    } catch (error) {
+      res.status(500).send({ message: "Internal Server Error" });
+    }
   })
 );
 

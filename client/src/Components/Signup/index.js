@@ -27,7 +27,7 @@ function Signup() {
           navigate("/");
         }
       } catch (error) {
-        console.log("err: ", err.message);
+        console.log("error: ", error.message);
       }
     }
   };
