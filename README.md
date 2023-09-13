@@ -5,8 +5,6 @@ React, Protected Routes, Axios and JWT.
 
 ### DEMO
 
-[Click Here For DEMO ](https://finance-users.herokuapp.com/)
-
 ```
 
 ## App Info
